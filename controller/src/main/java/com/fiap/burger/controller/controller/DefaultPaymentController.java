@@ -9,6 +9,7 @@ import com.fiap.burger.usecase.adapter.usecase.PaymentUseCase;
 import com.fiap.burger.usecase.misc.exception.PaymentNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -43,6 +44,7 @@ public class DefaultPaymentController implements PaymentController {
     }
 
     @Override
+    @Transactional
     public void updateStatus(Long id, PaymentStatus status) {
         var persistedPayment = useCase.updateStatus(id, status);
         messenger.sendMessage(persistedPayment);
