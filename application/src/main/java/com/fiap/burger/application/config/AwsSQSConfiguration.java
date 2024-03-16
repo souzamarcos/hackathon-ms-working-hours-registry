@@ -2,6 +2,7 @@ package com.fiap.burger.application.config;
 
 import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 import com.amazonaws.client.builder.AwsClientBuilder;
+import com.amazonaws.services.sqs.AmazonSQS;
 import com.amazonaws.services.sqs.AmazonSQSAsync;
 import com.amazonaws.services.sqs.AmazonSQSAsyncClientBuilder;
 import com.fiap.burger.usecase.misc.profiles.NotTest;
@@ -26,7 +27,7 @@ public class AwsSQSConfiguration
     @Bean
     @Primary
     @Production
-    public AmazonSQSAsync productionAmazonSQSAsync() {
+    public AmazonSQS productionAmazonSQSAsync() {
         return AmazonSQSAsyncClientBuilder
                 .standard()
                 .withCredentials(new DefaultAWSCredentialsProviderChain())
@@ -34,9 +35,7 @@ public class AwsSQSConfiguration
     }
 
     @Bean
-    @Primary
-    @NotTest
-    public AmazonSQSAsync defaultAmazonSQSAsync() {
+    public AmazonSQS defaultAmazonSQSAsync() {
         AwsClientBuilder.EndpointConfiguration endpoint = new AwsClientBuilder.EndpointConfiguration(LOCALSTACK_ENDPOINT, awsRegion);
 
         return AmazonSQSAsyncClientBuilder
