@@ -41,7 +41,7 @@ public class AwsSQSConfiguration
     @Primary
     @NotProduction
     public AmazonSQSAsync defaultAmazonSQSAsync() {
-        AwsClientBuilder.EndpointConfiguration endpoint = new AwsClientBuilder.EndpointConfiguration(LOCALSTACK_ENDPOINT, awsRegion);
+        AwsClientBuilder.EndpointConfiguration endpoint = new AwsClientBuilder.EndpointConfiguration(LOCALSTACK_ENDPOINT, AWS_REGION);
 
         return AmazonSQSAsyncClientBuilder
                 .standard()
