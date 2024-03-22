@@ -28,7 +28,7 @@ public class DefaultWorkingHourMessageListener {
             var dto = gson.fromJson(message, WorkingHourMessageListenerDto.class);
             controller.insert(dto.toEntity());
         } catch (Exception ex) {
-            throw new WorkingHourMessageListenerException(ex.getMessage());
+            throw new WorkingHourMessageListenerException(ex);
         }
     }
 }

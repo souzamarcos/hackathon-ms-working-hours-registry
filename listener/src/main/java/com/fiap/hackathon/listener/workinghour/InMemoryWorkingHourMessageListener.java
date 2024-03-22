@@ -18,7 +18,7 @@ public class InMemoryWorkingHourMessageListener {
             var dto = new Gson().fromJson(message, WorkingHourMessageListenerDto.class);
             controller.insert(dto.toEntity());
         } catch (Exception ex) {
-            throw new WorkingHourMessageListenerException("An exception was thrown during the execution of the SQS listener method and Message will be still available in Queue");
+            throw new WorkingHourMessageListenerException(ex);
         }
     }
 }
