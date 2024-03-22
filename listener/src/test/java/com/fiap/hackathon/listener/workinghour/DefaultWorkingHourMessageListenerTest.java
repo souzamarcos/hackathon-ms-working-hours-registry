@@ -39,7 +39,7 @@ class DefaultWorkingHourMessageListenerTest {
     void shouldThrownOrderMessageListenerExceptionWhenExceptionInInserting() {
         var workingHour = new WorkingHour("ABC001", Instant.MAX);
         var payloadSQS = "{\"employeeId\":\"ABC001\",\"registryDateTime\":\"+1000000000-12-31T23:59:59.999999999Z\"}";
-        var expected = new WorkingHourMessageListenerException("Mock Error");
+        var expected = new WorkingHourMessageListenerException();
 
         when(controller.insert(workingHour)).thenThrow(new RuntimeException("Mock Error"));
 
