@@ -1,4 +1,4 @@
-rootProject.name = "ms-payment"
+rootProject.name = "ms-working-hours-registry"
 include("application")
 include("api")
 include("controller")
