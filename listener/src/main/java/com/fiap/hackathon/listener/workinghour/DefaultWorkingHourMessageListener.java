@@ -20,7 +20,7 @@ public class DefaultWorkingHourMessageListener {
     @Autowired
     WorkingHourController controller;
 
-    @SqsListener(value = "${cloud.aws.sqs.working-hour-queue}", deletionPolicy = SqsMessageDeletionPolicy.ON_SUCCESS)
+    @SqsListener(value = "${cloud.aws.sqs.working-hours-entry-queue}", deletionPolicy = SqsMessageDeletionPolicy.ON_SUCCESS)
     @Transactional
     public void workingHourQueueListener(String message) {
         try {
